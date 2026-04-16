@@ -25,12 +25,14 @@ public class BankAccount {
     }
 
     public void withdraw(double amount) {
-        balance -= amount;
-        history.add("Withdrew: $" + amount);
+        if (amount <= balance) {
+            balance -= amount;
+            history.add("Withdrew: $" + amount);
+        }
     }
 
     public boolean isAccountType(String type) {
-        return this.accountType == type;
+        return this.accountType.equals(type);
     }
 
     public double getBalance() {
